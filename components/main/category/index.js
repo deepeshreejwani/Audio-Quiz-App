@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, Image, View, Alert, TouchableOpacity, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, Image, View, Alert, TouchableOpacity } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
 import PropTypes from 'prop-types';
 
 export default class Category extends Component {
@@ -15,7 +16,7 @@ export default class Category extends Component {
     }
 
     componentDidMount() {
-        AsyncStorage.getItem('@' + this.props.category, (err, result) => {
+        SecureStore.getItemAsync('@' + this.props.category, (err, result) => {
             if (result != null) {
                 this.setState({
                     text: this.props.text + '\n' + result + '/10',

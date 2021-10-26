@@ -1,4 +1,6 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import React from 'react';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import Main from './components/main/index';
 import Splash from './components/splash/index';
 import Quiz from './components/quiz/index';

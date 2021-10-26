@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Alert, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import PropTypes from 'prop-types';
 import * as Permissions from 'expo-permissions';
 import { Audio } from 'expo-av'
+import * as SecureStore from 'expo-secure-store';
 import * as FileSystem from 'expo-file-system';
 
 export default class Quiz extends Component {
@@ -258,7 +259,7 @@ export default class Quiz extends Component {
                         { cancelable: true }
                     );
                 } else {
-                    AsyncStorage.setItem('@' + this.state.category, JSON.stringify(this.state.correct + 1), () => {
+                    SecureStore.setItemAsync('@' + this.state.category, JSON.stringify(this.state.correct + 1), () => {
                         Alert.alert(
                             this.state.correct + 1 + '/10',
                             'You have answered all questions in this category. Play other category now!',
@@ -284,7 +285,7 @@ export default class Quiz extends Component {
                         { cancelable: true }
                     );
                 } else {
-                    AsyncStorage.setItem('@' + this.state.category, JSON.stringify(this.state.correct + 1), () => {
+                    SecureStore.setItemAsync('@' + this.state.category, JSON.stringify(this.state.correct + 1), () => {
                         Alert.alert(
                             this.state.correct + 1 + '/10',
                             'You have answered all questions in this category. Play other category now!',
@@ -309,7 +310,7 @@ export default class Quiz extends Component {
                         { cancelable: true }
                     );
                 } else {
-                    AsyncStorage.setItem('@' + this.state.category, JSON.stringify(this.state.correct), () => {
+                    SecureStore.setItemAsync('@' + this.state.category, JSON.stringify(this.state.correct), () => {
                         Alert.alert(
                             this.state.correct + '/10',
                             'You have answered all questions in this category. Play other category now!',
