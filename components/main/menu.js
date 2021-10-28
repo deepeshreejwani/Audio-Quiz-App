@@ -61,9 +61,9 @@ const Menu= (props) => {
     }
   };
   useEffect(() => {
-    console.log(props.item);
+    //console.log(props.item);
     const result = SecureStore.getItemAsync("@" + props.item.category);
-    console.log(result);
+    //console.log(result);
     if (result != null) {
       setPlayed(true);
       setText(text + "\n" + result + "/10");
