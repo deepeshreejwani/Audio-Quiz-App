@@ -1,28 +1,25 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import Main from './components/main/index';
-import Splash from './components/splash/index';
-import Quiz from './components/quiz/index';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Main from './components/main/main';
+import Quiz from './components/quiz/quiz';
+import Splash from './components/splash/splash';
+const Stack = createStackNavigator();
 
-const RootStack = createStackNavigator(
-  {
-    Main: { screen: Main },
-    Splash: {
-      screen: Splash,
-      navigationOptions: {
-        header: null,
-      },
-    },
-    Quiz: {
-      screen: Quiz
-    },
-  },
-  {
-    initialRouteName: 'Splash',
-  }
-);
+function MyStack() {
+  return (
+    <Stack.Navigator initialRouteName="Main">
+        <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Quiz" component={Quiz} />
+    </Stack.Navigator>
+  );
+}
 
-const App = createAppContainer(RootStack);
-
-export default App; 
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
+}
